@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+             xmlns="https://jakarta.ee/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+             
+  <persistence-unit name="AliceNailsQuijo" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    
+    
+    <properties>
+      <!-- Configurações de Conexão MySQL (Driver JDBC atualizado) -->
+      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/salao?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+      <property name="jakarta.persistence.jdbc.user" value="root"/>
+      <property name="jakarta.persistence.jdbc.password" value="Jc630694d$"/>
+      
+      <!-- Configurações do Dialeto do Hibernate -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      
+      <!-- Logs de SQL no console (útil para desenvolvimento) -->
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      
+      <!-- Atualiza a estrutura do banco de dados automaticamente se houver alterações no código -->
+      <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>
