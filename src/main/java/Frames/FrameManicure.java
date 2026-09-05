@@ -409,7 +409,28 @@ public class FrameManicure extends javax.swing.JFrame {
     }//GEN-LAST:event_NovoAgendamentoActionPerformed
 
     private void btEditarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarAgendaActionPerformed
-        // TODO add your handling code here:
+         // Verifdica se há alguma linha selecionada
+        int linhaSelecionada = tblAgenda.getSelectedRow();
+        
+        if(linhaSelecionada >= 0 ){
+            try{
+                // Pega o ID da primeira coluna (linha selecionada, coluna 0)
+                int id = Integer.parseInt(tblAgenda.getValueAt(linhaSelecionada, 0 ).toString());
+                
+                // Busca o objeto Agendamento completo no banco de dado pelo ID
+                AgendaDAO dao = new AgendaDAO();
+                Agenda agendamentoSeleionado = dao.obter(id);
+                
+                // Abre a tela de Cadastro/ Edição e envia os dados para preenchimento
+                CadastroAgenda cadastro = new CadastroAgenda();
+                cadastro.preencherEdicao(agendamentoSeleionado);
+                cadastro.setVisible(true);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this,"Erro ao manicure : "+e.getMessage());
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,"Por favor, selecione um agendamento na tela para editar. ");
+        }
     }//GEN-LAST:event_btEditarAgendaActionPerformed
 
     private void btExcluirAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirAgendaActionPerformed
