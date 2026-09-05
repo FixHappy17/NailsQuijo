@@ -147,7 +147,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     telaADM.setVisible(true);
                 }
                 else if(usuario.getTipo().equalsIgnoreCase("manicure")){
-                    TelaManicure telaMan = new TelaManicure();
+                    FrameManicure telaMan = new FrameManicure();
                     telaMan.setVisible(true);
                 }
                 
